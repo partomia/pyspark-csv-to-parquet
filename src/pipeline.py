@@ -1,6 +1,7 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col
 from config.settings import INPUT_PATH, OUTPUT_PATH, SALES_THRESHOLD
+from src.validate import run_validation
 
 
 def create_spark_session(app_name: str) -> SparkSession:
@@ -30,6 +31,10 @@ def write_parquet(df, path: str):
 
 
 def main():
+    print("[INFO] Running data validation...")
+    if not run_validation(INPUT_PATH):
+        raise SystemExit("[ERROR] Validation failed — pipeline aborted.")
+
     spark = create_spark_session("CSV to Parquet ETL")
     spark.sparkContext.setLogLevel("WARN")
 
