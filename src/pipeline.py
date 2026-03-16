@@ -18,7 +18,7 @@ def read_csv(spark: SparkSession, path: str):
 
 
 def transform(df):
-    df_deduped = df.dropDuplicates()
+    df_deduped = df.dropDuplicates(["customer", "region", "sales"])
     df_filtered = df_deduped.filter(col("sales") > SALES_THRESHOLD)
     return df_filtered
 
