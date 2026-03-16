@@ -1,0 +1,11 @@
+order_id,customer,region,sales
+1,Alice,West,1500
+2,Bob,East,800
+3,Carol,North,2200
+4,Alice,West,1500
+5,Dave,South,3400
+6,Eve,West,950
+7,Frank,East,1100
+8,Grace,North,500
+9,Dave,South,3400
+10,Heidi,East,1750
